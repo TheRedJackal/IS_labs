@@ -106,7 +106,13 @@ public class HistogramApp {
 		BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream(filename));
 		try{
 			//TODO: Hier kommt Ihr Code
-
+                        int counter = 0;
+                        int read_slot = 0;
+                        while((read_slot = inputStream.read()) != -1) {
+                            frequencyTable[counter].addByte(read_slot);
+                            counter++;
+                            counter = counter % slots;
+                        }
 			
 			
 		} finally {

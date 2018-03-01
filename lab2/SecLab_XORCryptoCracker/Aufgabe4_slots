@@ -1,0 +1,61 @@
+Was bedeutet der optionale Kommandozeilen Parameter slots?
+Es werden mehrere Histogram erstellt wenn slots != 1. Bei Slot 2 werden zum Beispiel zwei Histogram erstellt und zwar werden für das erste die Bytes 1,3,5 und für das zweite 2,4,6 benutzt.
+
+Wenn slots = Schlüssellänge:
+So wird für jedes Byte des Schlüssel ein Histogram erstellt
+
+---
+
+Gibt es pro Schlüsselbyte jeweils ein klar häufigstes Byte in message11.dat.enc?
+Ja zwischen 210 und 270 occurences
+
+---
+
+in message12.dat?
+Nein
+
+---
+Schlüsselbyte 5 -> 49 (Dev) 31 (Hex)
+Schlüsselbyte 6 -> 148 (Dec) 94 (Hex)
+
+Häufigstes Plaintextbyte: 20
+
+5 -> VerXORed = 11
+6 -> VerXORed = B4
+
+---
+Schlüsselbyte 2 -> 22 / 27 / 121 (Dec) 18 / 1B / 79 (Hex)
+
+Häufigstes Plaintextbyte: 00
+
+2 -> VerXORed 18 / 1B / 79
+
+message11 erfolgreich, message12 nicht. 
+
+---
+nein,ja,nein
+---
+Einer der häufigsten Bytes der gezippten Datei ist auch das häufigste Byte bei der verschlüsselten Datei. Auswahl wird so eingegrenzt.
+
+---
+KeyGenerator funktionsweise
+
+Generiert Schlüsselkandidaten welche ausserhalb weiterverarbeitet werden
+
+---
+
+depth = numberOfCandidatesPerKeyByte
+Grundsätzlich schneller, da das häufigste Byte in der verschlüsselten Datei auch bei den häufigsten Bytes vorkommt.
+
+---
+
+message12.dat.enc mit depth=8: 0a 1b 2c 3d 11 4b
+
+---
+
+Warum dauert es zu lange? Weiss nicht!
+
+---
+
+message31: depth = 4 / Key: 11 22 33 44 55 4b
+message41: depth = 5 / Key: 11 22 33 44 aa bb cc dd 

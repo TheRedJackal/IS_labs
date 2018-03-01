@@ -67,8 +67,16 @@ public class EncryptedZipFile {
 		//      
 		//      Looking at other methods in this class might also help in
 		//      finding a suitable approach. 
+                boolean valid = true;
+                
+                for(int i = 0; i < ZIP_FILE_HEADER.length; i++) {
+                    if(!decryptAndCompareByte(ZIP_FILE_HEADER[i], encryptedZipFile[i], key[i])){
+                        valid = false;
+                        break;
+                    }
+                }
 		
-		return true;
+		return valid;
 	}
 	
 	private static boolean decryptAndCompareByte(int expectedValue, byte byteToDecryptAndTest, int keyByte) {

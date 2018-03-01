@@ -32,7 +32,14 @@ public class XorAndCompressCracker implements ProgressInfo {
 		ByteFrequencyTable[] frequencyTable = getFrequencyTableForKeyLength(keylength); 
 		int[] key = null;
 
-		//TODO
+		boolean keyFound = false;
+                for(int i = 0; i < 256; i++) {
+                    KeyGenerator keyGen = new KeyGenerator(frequencyTable, depth, i);
+                    
+                    while(!keyFound && (key = keyGen.getNextCandidateKey()) != null) {
+                        keyFound = encryptedZipFile.tryDecryption(key);
+                    }
+                }
 
 		return key;
 	}

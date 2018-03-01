@@ -1,0 +1,41 @@
+How to Design—And Defend Against—The Perfect Security Backdoor
+By Bruce Schneier
+
+We already know the NSA wants to eavesdrop on the internet. It has secret agreements with telcos to get direct access to bulk internet traffic. It has massive systems like TUMULT, TURMOIL, and TURBULENCE to sift through it all. And it can identify ciphertext—encrypted information—and figure out which programs could have created it.
+But what the NSA wants is to be able to read that encrypted information in as close to real-time as possible. It wants backdoors, just like the cybercriminals and less benevolent governments do.
+And we have to figure out how to make it harder for them, or anyone else, to insert those backdoors.
+
+How the NSA Gets Its Backdoors
+The FBI tried to get backdoor access embedded in an AT&T secure telephone system in the mid-1990s. The Clipper Chip included something called a LEAF: a Law Enforcement Access Field. It was the key used to encrypt the phone conversation, itself encrypted in a special key known to the FBI, and it was transmitted along with the phone conversation. An FBI eavesdropper could intercept the LEAF and decrypt it, then use the data to eavesdrop on the phone call.
+But the Clipper Chip faced severe backlash, and became defunct a few years after being announced.
+Having lost that public battle, the NSA decided to get its backdoors through subterfuge: by asking nicely, pressuring, threatening, bribing, or mandating through secret order. The general name for this program is BULLRUN.
+Defending against these attacks is difficult. We know from subliminal channel and kleptography research that it's pretty much impossible to guarantee that a complex piece of software isn't leaking secret information. We know from Ken Thompson's famous talk on 'trusting trust' (first delivered in the ACM Turing Award Lectures) that you can never be totally sure if there's a security flaw in your software.
+Since BULLRUN became public last month, the security community has been examining security flaws discovered over the past several years, looking for signs of deliberate tampering. The Debian random number flaw was probably not deliberate, but the 2003 Linux security vulnerability probably was. The DUAL_EC_DRBG random number generator may or may not have been a backdoor. The SSL 2.0 flaw was probably an honest mistake. The GSM A5/1 encryption algorithm was almost certainly deliberately weakened. All the common RSA moduli out there in the wild: We don't know. Microsoft's _NSAKEY looks like a smoking gun, but honestly, we don't know.
+
+How the NSA Designs Backdoors
+While a separate program that sends our data to some IP address somewhere is certainly how any hacker—from the lowliest script kiddie up to the NSA —spies on our computers, it's too labor-intensive to work in the general case.
+For government eavesdroppers like the NSA, subtlety is critical. In particular, three characteristics are important:
+Low discoverability. The less the backdoor affects the normal operations of the program, the better. Ideally, it shouldn't affect functionality at all. The smaller the backdoor is, the better. Ideally, it should just look like normal functional code. As a blatant example, an email encryption backdoor that appends a plaintext copy to the encrypted copy is much less desirable than a backdoor that reuses most of the key bits in a public IV ('initialization vector').
+High deniability. If discovered, the backdoor should look like a mistake. It could be a single opcode change. Or maybe a 'mistyped' constant. Or 'accidentally' reusing a single-use key multiple times. This is the main reason I am skeptical about _NSAKEY as a deliberate backdoor, and why so many people don't believe the DUAL_EC_DRBG backdoor is real: They're both too obvious.
+Minimal conspiracy. The more people who know about the backdoor, the more likely the secret is to get out. So any good backdoor should be known to very few people. That's why the recently described potential vulnerability in Intel's random number generator worries me so much; one person could make this change during mask generation, and no one else would know.
+
+These characteristics imply several things:
+    A closed-source system is safer to subvert, because an open-source system comes with a greater risk of that subversion being discovered. On the other hand, a big open-source system with a lot of developers and sloppy version control is easier to subvert.
+    If a software system only has to interoperate with itself, then it is easier to subvert. For example, a closed VPN encryption system only has to interoperate with other instances of that same proprietary system. This is easier to subvert than an industry-wide VPN standard that has to interoperate with equipment from other vendors.
+    A commercial software system is easier to subvert, because the profit motive provides a strong incentive for the company to go along with the NSA's requests.
+    Protocols developed by large open standards bodies are harder to influence, because a lot of eyes are paying attention. Systems designed by closed standards bodies are easier to influence, especially if the people involved in the standards don't really understand security.
+    Systems that send seemingly random information in the clear are easier to subvert. One of the most effective ways of subverting a system is by leaking key information—recall the LEAF—and modifying random nonces or header information is the easiest way to do that.
+
+Design Strategies for Defending Against Backdoors
+With these principles in mind, we can list design strategies. None of them is foolproof, but they are all useful. I'm sure there's more; this list isn't meant to be exhaustive, nor the final word on the topic. It's simply a starting place for discussion. But it won't work unless customers start demanding software with this sort of transparency.
+Vendors should make their encryption code public, including the protocol specifications. This will allow others to examine the code for vulnerabilities. It's true we won't know for sure if the code we're seeing is the code that's actually used in the application, but surreptitious substitution is hard to do, forces the company to outright lie, and increases the number of people required for the conspiracy to work.
+The community should create independent compatible versions of encryption systems, to verify they are operating properly. I envision companies paying for these independent versions, and universities accepting this sort of work as good practice for their students. And yes, I know this can be very hard in practice.
+
+There should be no master secrets. These are just too vulnerable.
+All random number generators should conform to published and accepted standards. Breaking the random number generator is the easiest difficult-to-detect method of subverting an encryption system. A corollary: We need better published and accepted RNG standards.
+Encryption protocols should be designed so as not to leak any random information. Nonces should be considered part of the key or public predictable counters if possible. Again, the goal is to make it harder to subtly leak key bits in this information.
+***
+This is a hard problem. We don't have any technical controls that protect users from the authors of their software.
+And the current state of software makes the problem even harder: Modern apps chatter endlessly on the internet, providing noise and cover for covert communications. Feature bloat provides a greater "attack surface" for anyone wanting to install a backdoor.
+In general, what we need is assurance: methodologies for ensuring that a piece of software does what it's supposed to do and nothing more. Unfortunately, we're terrible at this. Even worse, there's not a lot of practical research in this area—and it's hurting us badly right now.
+Yes, we need legal prohibitions against the NSA trying to subvert authors and deliberately weaken cryptography. But this isn't just about the NSA, and legal controls won't protect against those who don't follow the law and ignore international agreements. We need to make their job harder by increasing their risk of discovery. Against a risk-averse adversary, it might be good enough. 
