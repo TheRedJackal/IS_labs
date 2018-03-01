@@ -1,0 +1,44 @@
+Begriffsdefinitionen zur Thematik IT-Sicherheit
+
+Viele der nachfolgenden Begriffe werden je nach Autor und sprachlichem Umfeld unterschiedlich interpretiert.
+
+Für die Abkürzung IT wird die Bezeichnung Informationstechnik synonym zu Informationstechnologie benutzt. Die technische Verarbeitung und Übertragung von Informationen steht bei der IT im Vordergrund.
+
+Im Englischen hat der deutsche Begriff der IT-Sicherheit zwei verschiedene Ausprägungen. Die Eigenschaft der Funktionssicherheit (englisch: safety) stellt sicher, dass sich ein System konform zur erwarteten Funktionalität verhält. Es funktioniert so, wie es soll. Informationssicherheit (englisch: security) bezieht sich auf den Schutz der technischen Verarbeitung von Informationen und ist eine Eigenschaft eines funktionssicheren Systems. Sie soll verhindern, dass nicht-autorisierte Datenmanipulationen möglich sind oder die Preisgabe von Informationen stattfindet.[1]:4 f.
+
+Der Begriff Informationssicherheit bezieht sich oft auf eine globale Informationssicherheit, bei der die Zahl der möglichen schädlichen Szenarien summarisch reduziert ist oder der Aufwand zur Kompromittierung für den Betreiber in einem ungünstigen Verhältnis zum erwarteten Informationsgewinn steht. In dieser Sichtweise ist die Informationssicherheit eine ökonomische Größe, mit der zum Beispiel in Betrieben und Organisationen gerechnet werden muss. Daneben bezieht sich der Begriff auch auf die Sicherheit unter einem bestimmten Szenarium. In diesem Sinn liegt Informationssicherheit vor, wenn über einen bereits bekannten Weg kein Angriff auf das System mehr möglich ist. Man spricht von einer binären Größe, weil die Information beim Anwenden dieser speziellen Methode entweder sicher oder nicht sicher sein kann.[2]
+
+Information (oder Daten) sind schützenswerte Güter. Der Zugriff auf diese sollte beschränkt und kontrolliert sein. Nur autorisierte Benutzer oder Programme dürfen auf die Information zugreifen. Schutzziele werden zum Erreichen bzw. Einhalten der Informationssicherheit und damit zum Schutz der Daten vor beabsichtigten Angriffen von IT-Systemen definiert:[1]:6-11
+
+-Vertraulichkeit (englisch: confidentiality): Daten dürfen lediglich von autorisierten Benutzern gelesen bzw. modifiziert werden, dies gilt sowohl beim Zugriff auf gespeicherte Daten wie auch während der Datenübertragung.
+
+-Integrität (englisch: integrity): Daten dürfen nicht unbemerkt verändert werden. Alle Änderungen müssen nachvollziehbar sein.
+
+-Verfügbarkeit (englisch: availability): Verhinderung von Systemausfällen; der Zugriff auf Daten muss innerhalb eines vereinbarten Zeitrahmens gewährleistet sein.[1]:7-13
+
+Weitere Schutzziele der Informationssicherheit:[1]:7-13
+-Authentizität (englisch: authenticity) bezeichnet die Eigenschaften der Echtheit, Überprüfbarkeit und Vertrauenswürdigkeit eines Objekts.[3]
+
+-Verbindlichkeit/Nichtabstreitbarkeit (englisch: non repudiation): Sie erfordert, dass „kein unzulässiges Abstreiten durchgeführter Handlungen“ möglich ist.[4] Sie ist unter anderem wichtig beim elektronischen Abschluss von Verträgen. Erreichbar ist sie beispielsweise durch elektronische Signaturen. [5]
+
+-Zurechenbarkeit (englisch: accountability): „Eine durchgeführte Handlung kann einem Kommunikationspartner eindeutig zugeordnet werden.“[4] in bestimmtem Kontext (zum Beispiel im Internet) auch Anonymität
+
+Jedes noch so gut geplante und umgesetzte IT-System kann Schwachstellen besitzen. Sind bestimmte Angriffe zum Umgehen der vorhandenen Sicherheitsvorkehrungen möglich, ist das System verwundbar. Nutzt ein Angreifer eine Schwachstelle oder eine Verwundbarkeit zum Eindringen in ein IT-System, sind die Vertraulichkeit, Datenintegrität und Verfügbarkeit bedroht (englisch: threat). Angriffe auf die Schutzziele bedeuten für Unternehmen Angriffe auf reale Unternehmenswerte, im Regelfall das Abgreifen oder Verändern von unternehmensinternen Informationen. Jede mögliche Bedrohung ist ein Risiko (englisch: risk) für das Unternehmen. Unternehmungen versuchen durch die Verwendung eines Risikomanagements (englisch: risk management) die Wahrscheinlichkeit des Eintretens eines Schadens und die daraus resultierende Schadenshöhe zu bestimmen.[1]:14-17
+
+Nach einer Risikoanalyse und Bewertung der unternehmensspezischen IT-Systeme, können entsprechende Schutzziele definiert werden. Anschließend folgt die Auswahl von IT-Sicherheitsmaßnahmen für die jeweiligen Geschäftsprozesse eines Unternehmens. Dieser Vorgang zählt zu den Tätigkeiten des IT-Sicherheitsmanagements. Eine genormte Vorgehensweise wird durch das Verwenden von IT-Standards ermöglicht.
+
+Im Rahmen des IT-Sicherheitsmanagements findet die Auswahl und Umsetzung entsprechender IT-Sicherheitsstandards statt. Zu diesem Zweck existieren im Bereich IT-Sicherheitsmanagement verschiedene Standards. Mit Hilfe des ISO/IEC 27001 - oder des IT-Grundschutz -Standards wird mit anerkannten Regeln versucht, die Komplexität soziotechnischer Systeme für den Bereich des IT-Sicherheitsmanagements zu reduzieren und ein geeignetes Maß an Informationssicherheit zu finden.
+Teilaspekte
+
+Folgende Aspekte sind in dem umfassenden Begriff Informationssicherheit (Schutz der verarbeiteten Informationen) enthalten:
+
+    IT-Sicherheit bezeichnet die Sicherheit von soziotechnischen Systemen. IT oder auch ITK-Systeme sind Teil der soziotechnischen Systeme. Zu den Aufgaben der IT-Sicherheit gehört der Schutz von Organisationen (zum Beispiel Unternehmen) und deren Werte gegen Bedrohungen. Gleichzeitig soll wirtschaftlicher Schaden verhindert werden.[1]:3-7
+
+    Abgrenzung zur IT-Sicherheit: Die Informationssicherheit umfasst neben der Sicherheit der IT-Systeme und der darin gespeicherten Daten auch die Sicherheit von nicht elektronisch verarbeiteten Informationen. Beispiel: Die Prinzipien der Informationssicherheit können auch auf per Hand auf Papier notierte Rezepte eines Restaurants angewendet werden (da Vertraulichkeit, Integrität und Verfügbarkeit der Rezepte für das Restaurant extrem wichtig sein können, selbst wenn dieses Restaurant 100 % ohne Einsatz irgendeines IT-Systems betrieben wird).
+
+Verwandte Begriffe sind:
+
+    Computersicherheit: die Sicherheit eines Computersystems vor Ausfall (man spricht von ungeplanter oder geplanter Ausfallzeit, engl. downtime) und Manipulation (Datensicherheit) sowie vor unerlaubtem Zugriff (Datenschutz)
+    Datensicherheit ist ein häufig mit dem Datenschutz verknüpfter Begriff, der von diesem zu unterscheiden ist. Datensicherheit hat das technische Ziel, Daten jeglicher Art in ausreichendem Maße gegen Verlust, Manipulationen und andere Bedrohungen zu sichern. Hinreichende Datensicherheit ist eine Voraussetzung für effektiven Datenschutz. Das BDSG nennt den Begriff der Datensicherheit lediglich in §9a im Zusammenhang mit dem ebenfalls nicht näher definierten Datenschutzaudit.
+    Datenschutz. Es geht hierbei nicht um den Schutz von allgemeinen Daten vor Schäden, sondern um den Schutz persönlicher Daten vor Missbrauch. Der Schutz personenbezogener Daten stützt sich auf das Prinzip der informationellen Selbstbestimmung. Diese wurde im BVerfG-Urteil zur Volkszählung festgeschrieben. Geschützt werden muss dabei die Privatsphäre, d. h. Persönlichkeitsdaten bzw. Anonymität müssen gewahrt bleiben. Datenschutz verlangt über die Datensicherheit hinaus den Ausschluss des Zugangs zu Daten mit unberechtigtem Lesen durch unbefugte Dritte. Das deutsche Bundesdatenschutzgesetz (BDSG) beschreibt in §1 ausschließlich Anforderungen für den Umgang mit personenbezogenen Daten. Das BDSG definiert den Unterschied der Begriffe Datenschutz und Datensicherheit nicht. Nur wenn geeignete Schutzmaßnahmen getroffen werden, kann man davon ausgehen, dass vertrauliche bzw. personenbezogene Daten nicht in die Hände von Unbefugten gelangen. Hierbei spricht man in der Regel von technischen und organisatorischen Maßnahmen zum Datenschutz, die in der Anlage zum § 9 BDSG und in den Landesdatenschutzgesetzen beschrieben sind.
+    Datensicherung ist ein Synonym für Backup. Es war der ursprüngliche gesetzliche Begriff für Datenschutz.
