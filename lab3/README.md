@@ -17,5 +17,9 @@ Private Key zum signieren, Public Key zum verifizieren. Signiert wird ein Hash d
 ## Aufgabe 8
 Optional in den Folien
 ## Aufgabe 9
+Datei in lab3-Ordner
 ## Aufgabe 10
+m < 8*(2^(1/3))
+Für m < 10
 ## Aufgabe 11
+
