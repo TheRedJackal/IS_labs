@@ -13,7 +13,9 @@ Die Sicherheit von RSA beruht auf hohen Primzahlen und die momentane Unmöglichk
 ## Aufgabe 6
 Integrität und nicht abstreitbare Urheberschaft
 ## Aufgabe 7
+Private Key zum signieren, Public Key zum verifizieren. Signiert wird ein Hash der Nachricht.
 ## Aufgabe 8
+Optional in den Folien
 ## Aufgabe 9
 ## Aufgabe 10
 ## Aufgabe 11
