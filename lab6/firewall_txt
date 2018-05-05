@@ -1,0 +1,71 @@
+# Firewall-Skript fuer Security Lab
+
+###########################
+# 1. Teil - Voraussetzungen
+###########################
+
+#Alle Regeln loeschen
+iptables -F
+iptables -t nat -F
+
+#Policies auf DROP setzen
+iptables -P OUTPUT DROP
+iptables -P INPUT DROP
+iptables -P FORWARD DROP
+#################################
+# 2. Teil - Ping auf die Firewall
+#################################
+
+# Ping vom internen Netz auf die Firewall zulassen
+iptables -A INPUT -s 10.0.10.0/24 -d 10.0.10.1 -j ACCEPT -p icmp -i eth1 --icmp-type echo-request
+iptables -A OUTPUT -d 10.0.10.0/24 -s 10.0.10.1 -j ACCEPT -p icmp -o eth1 --icmp-type echo-reply
+
+#Ping vom DMZ Netz auf die Firwall zulassen
+iptables -A INPUT -s 192.168.10.128/25 -d 192.168.10.129 -j ACCEPT -p icmp -i eth2 --icmp-type echo-request
+iptables -A OUTPUT -d 192.168.10.128/25 -s 192.168.10.129 -j ACCEPT -p icmp -o eth2 --icmp-type echo-reply
+
+#####################################
+# 3. Teil - SSH internal auf DMZ Host
+#####################################
+
+# SSH vom internen Netz auf den DMZ Host zulassen
+iptables -A FORWARD -p tcp --dport 22 -i eth1 -s 10.0.10.2 -d 192.168.10.130 -j ACCEPT
+iptables -A FORWARD -p tcp --sport 22 -o eth1 -s 192.168.10.130 -d 10.0.10.2 ! --syn -j ACCEPT
+
+###########################################
+# 4. Teil - Uebergang zur stateful Firewall
+###########################################
+
+# Regel, um alle ESTABLISHED und RELATED Pakete passieren zu lassen
+iptables -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+###########################
+# 5. Teil - Stateful Regeln
+###########################
+
+# Ping vom internen Netz auf das externe Netz zulassen
+iptables -A FORWARD -p icmp -m state --state NEW -s 10.0.10.0/24 -d 192.168.10.0/25 -j ACCEPT
+
+# Ping vom internen Netz auf die DMZ zulassen
+iptables -A FORWARD -p icmp -m state --state NEW -s 10.0.10.0/24 -d 192.168.10.128/25 -j ACCEPT
+
+# Ping vom dmz Netz auf das externe Netz zulassen
+iptables -A FORWARD -p icmp -m state --state NEW -s 192.168.10.128/25 -d 192.168.10.0/25 -j ACCEPT
+
+# SSH vom externen Netz auf den DMZ Host zulassen
+iptables -A FORWARD -p tcp --dport 22 -m state --state NEW -s 192.168.10.0/25 -d 192.168.10.128/25 -j ACCEPT
+
+# FTP vom externen Netz auf den DMZ Host zulassen
+iptables -A FORWARD -p tcp --dport 20:21 -m state --state NEW -s 192.168.10.0/25 -d 192.168.10.128/25 -j ACCEPT
+
+# TCP vom internen Netz zum externen Netz zulassen
+iptables -A FORWARD -p tcp -m state --state NEW -s 10.0.10.0/24 -d 192.168.10.0/25 -j ACCEPT
+
+# Traceroute (UDP-Teil) vom internen zum externen Netz zulassen
+iptables -A FORWARD -p udp --dport 33434:33534 -m state --state NEW -s 10.0.10.0/24 -d 192.168.10.0/25 -j ACCEPT
+
+###############
+# 6. Teil - NAT
+###############
+
+#Adressen des internen Netzes mit externer Firewall-Adresse ersetzen
