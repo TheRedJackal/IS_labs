@@ -5,7 +5,7 @@
 Issuer: Identität, welche das Zertifikat ausgestellt hat => Aussteller
 Subject: Identität, welche mit dem im Subject public key feld verknüpft ist => Zertifikatsinhaber
 
-##Issuer und Subject weisen in diesem Zertifikat den gleichen Wert auf. Wieso ist das so?
+## Issuer und Subject weisen in diesem Zertifikat den gleichen Wert auf. Wieso ist das so?
 
 Weil wir als CA für uns ein eigenes Zertifikat erstellt haben.
 
